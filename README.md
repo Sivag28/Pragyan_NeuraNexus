@@ -35,6 +35,9 @@ ai_patient_triage/
 └── requirements.txt           # Dependencies
 ```
 
+**System Architecture**
+![system architechture](https://github.com/user-attachments/assets/aaae6e90-54a3-4d4f-9955-dd1b070c51e0)
+
 ## Features
 
 ### Core Features
