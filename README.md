@@ -73,6 +73,9 @@ ai_patient_triage/
 ## Tools and Technologies
 ![tools and technologies](https://github.com/user-attachments/assets/fd9e170d-abbc-486e-9bf2-6d669f34ed74)
 
+## Usecase Diagram
+![use case diagram](https://github.com/user-attachments/assets/63d7d68e-5601-495b-938e-f12ff1f757e5)
+
 ## Installation
 
 1. Clone the repository or navigate to the project directory
