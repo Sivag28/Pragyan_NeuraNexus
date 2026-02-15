@@ -168,6 +168,22 @@ app = Flask(__name__)
 # Secret key for sessions
 app.secret_key = os.environ.get('SECRET_KEY', secrets.token_hex(32))
 
+# Add CORS headers to all responses
+@app.after_request
+def add_cors_headers(response):
+    """Add CORS headers to all responses"""
+    response.headers['Access-Control-Allow-Origin'] = '*'
+    response.headers['Access-Control-Allow-Methods'] = 'GET, POST, PUT, DELETE, OPTIONS, PATCH'
+    response.headers['Access-Control-Allow-Headers'] = 'Content-Type, Authorization'
+    return response
+
+# Handle OPTIONS requests for CORS preflight
+@app.route('/<path:path>', methods=['OPTIONS'])
+@app.route('/', methods=['OPTIONS'])
+def handle_options(path='_'):
+    """Handle OPTIONS requests for CORS preflight"""
+    return '', 204
+
 # User collection for authentication
 users_collection = None
 

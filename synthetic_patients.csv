@@ -222,3 +222,13 @@ P_1771118098468,46,female,140,68,117,97,97,4,chest_pain,asthma,medium,Gastroente
 P_1771118098680,77,female,112,62,94,100,92,5,fatigue,diabetes,medium,Pulmonology
 P_1771118098877,25,female,125,67,86,99,90,7,sore_throat,diabetes,low,Emergency
 P_1771118118832,55,male,140,90,88,99,95,4,"fatigue,mild_cough",,medium,Gastroenterology
+P_1771136339135,35,female,152,86,75,99,90,2,back_pain,diabetes,low,General Medicine
+P_1771136339607,41,male,113,67,99,99,95,10,cough,heart_disease,low,Neurology
+P_1771136339691,30,female,114,72,62,98,98,4,dizziness,,low,ENT
+P_1771136339760,78,female,135,78,100,97,93,7,dizziness,hypertension,medium,Orthopedics
+P_1771136339823,26,female,159,77,95,97,99,5,shortness_of_breath,diabetes,low,Orthopedics
+P_1771136339891,27,male,142,88,113,100,96,1,fatigue,,medium,Pulmonology
+P_1771136339949,26,male,106,70,62,98,99,2,shortness_of_breath,diabetes,low,General Medicine
+P_1771136340009,72,female,121,89,102,97,92,4,back_pain,heart_disease,medium,Gastroenterology
+P_1771136340056,24,female,131,83,119,99,95,9,dizziness,,medium,Emergency
+P_1771136340118,31,male,122,62,84,100,93,8,chest_pain,heart_disease,low,Pulmonology
