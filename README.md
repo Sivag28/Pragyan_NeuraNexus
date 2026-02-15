@@ -181,6 +181,4 @@ Cardiology, Pulmonology, Emergency, Neurology, General Surgery, General Medicine
 - pymongo - MongoDB driver
 - python-dotenv - Environment variables
 
-## License
 
-MIT License
