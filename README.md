@@ -1,31 +1,71 @@
 # AI Patient Triage System
 
-An AI-powered patient triage system that uses machine learning to assess patient risk levels and prioritize care accordingly.
+An AI-powered patient triage system that uses machine learning to assess patient risk levels, recommend departments, and prioritize care accordingly.
 
 ## Project Structure
 
 ```
 ai_patient_triage/
-├── app.py                   # Flask backend
-├── risk_model.pkl           # Trained ML model (saved with joblib)
-├── synthetic_patients.csv   # Synthetic training dataset
-├── templates/
-│    └── index.html          # Frontend HTML form & dashboard
-├── static/
-│    ├── css/
-│    │    └── style.css      # Optional custom styles
-│    └── js/
-│         └── script.js      # Optional external JS
-├── requirements.txt         # All Python dependencies
-└── README.md                # Project overview and instructions
+├── app.py                      # Main Flask application
+├── api/
+│   └── index.py               # API handler (Vercel deployment)
+├── risk_model.pkl              # Trained Risk Prediction Model
+├── dept_model.pkl             # Trained Department Recommendation Model
+├── scaler.pkl                 # Feature scaler
+├── label_encoder.pkl           # Risk label encoder
+├── dept_encoder.pkl           # Department label encoder
+├── symptoms_encoder.pkl        # Symptoms encoder
+├── synthetic_patients.csv      # Training dataset
+├── department_capacity.json    # Department capacity config
+├── templates/                  # HTML templates
+│   ├── index.html
+│   ├── login.html
+│   └── dashboard.html
+├── static/                    # Static assets
+│   ├── css/
+│   └── js/
+├── frontend/                  # Frontend files
+│   ├── index.html
+│   ├── login.html
+│   ├── dashboard.html
+│   ├── css/
+│   └── js/
+├── chatbot_rules.py           # Chatbot rules
+├── hf_integration.py         # HuggingFace integration
+└── requirements.txt           # Dependencies
 ```
 
 ## Features
 
-- **Risk Assessment**: Uses machine learning to predict patient risk levels
-- **User-Friendly Interface**: Simple form for entering patient data
-- **Real-time Predictions**: Get instant risk assessments
-- **Dashboard View**: Visual overview of patient triage status
+### Core Features
+- **Risk Assessment**: Machine learning model (Random Forest) to predict patient risk levels (Low/Medium/High)
+- **Department Recommendation**: ML model (Gradient Boosting) to recommend appropriate hospital departments
+- **Explainability**: Detailed explanation of factors contributing to risk assessment
+
+### Data Integration
+- **MongoDB Integration**: Store and retrieve patient records from MongoDB Atlas
+- **EHR/EMR Import**: Import patient data from electronic health records (JSON, PDF, DOCX)
+- **Wearable Device Import**: Import patient vitals from wearable devices
+- **Document Upload**: OCR support for extracting data from images
+
+### Real-time Features
+- **Real-time Triage Simulation**: Process multiple patients with load balancing
+- **Department Queue Management**: Track patient queues and wait times
+- **Resource Utilization**: Monitor department capacity and utilization
+
+### Analytics & Fairness
+- **Fairness Analysis**: Comprehensive bias and fairness analysis across demographics
+- **Bias Detection**: Detect potential biases in model predictions
+- **Resource Allocation**: Analyze and recommend resource distribution
+
+### User Features
+- **User Authentication**: Secure login/registration system
+- **Dashboard**: Visual overview of triage status and analytics
+- **Patient Search**: Search and retrieve patient records
+
+### AI Features
+- **Chatbot**: AI-powered chatbot for hospital staff assistance
+- **HuggingFace Integration**: Optional NLP embeddings for advanced features
 
 ## Installation
 
@@ -34,9 +74,17 @@ ai_patient_triage/
    
 ```
 bash
-   pip install -r requirements.txt
-   
+pip install -r requirements.txt
 ```
+
+3. (Optional) Set up MongoDB Atlas:
+   - Create a MongoDB Atlas account
+   - Get your connection string
+   - Set the MONGO_URI environment variable
+
+4. (Optional) Set up HuggingFace:
+   - Get your HF token
+   - Configure via the `/hf/configure` endpoint
 
 ## Usage
 
@@ -44,22 +92,69 @@ bash
    
 ```
 bash
-   python app.py
-   
+python app.py
 ```
 
 2. Open your web browser and navigate to:
    
 ```
-   http://localhost:5000
-   
+http://localhost:5000
 ```
 
-3. Enter patient information in the form and click "Assess Risk" to get the triage prediction.
+3. Login or register an account
+4. Enter patient information to get risk assessment and department recommendation
+
+## API Endpoints
+
+### Authentication
+- `POST /login` - User login
+- `POST /register` - User registration
+- `POST /logout` - User logout
+- `GET /check-auth` - Check authentication status
+
+### Prediction
+- `POST /predict` - Single patient risk prediction
+- `POST /predict-batch` - Batch prediction for multiple patients
+- `GET /model-info` - Get model information
+
+### Triage (Real-time)
+- `POST /init-triage-session` - Initialize triage session
+- `POST /triage-patient` - Add patient to triage queue
+- `POST /triage-batch-stream` - Batch triage processing
+- `GET /department-status` - Get real-time department status
+- `GET /queue-priority` - Get prioritized patient queue
+- `GET /resource-utilization` - Get resource utilization metrics
+
+### Data Import
+- `POST /ehr-import` - Import from EHR/EMR documents
+- `POST /wearable-import` - Import from wearable devices
+- `POST /upload-document` - Upload and extract from documents
+
+### Analytics
+- `GET /fairness-analysis` - Comprehensive fairness analysis
+- `GET /department-fairness` - Department-level fairness
+- `GET /bias-detection` - Bias detection and mitigation
+- `GET /resource-allocation` - Resource allocation analysis
+
+### Patient Data
+- `POST /search-patient` - Search patients
+- `POST /get-patient-record` - Get patient details
+- `GET /get-recent-patients` - Get recent patients
+- `GET /dashboard-data` - Get dashboard data
+
+### Chatbot
+- `POST /chatbot/message` - Send chatbot message
+- `GET /chatbot/history` - Get conversation history
+- `POST /chatbot/clear` - Clear conversation
+
+### System
+- `GET /mongodb/status` - MongoDB connection status
+- `GET /update-department-capacity` - Update department capacity
+- `GET /get-department-capacity` - Get department capacity
 
 ## Model Information
 
-The risk model is trained on synthetic patient data and uses the following features:
+The models are trained on synthetic patient data and use the following features:
 - Age
 - Blood Pressure (Systolic/Diastolic)
 - Heart Rate
@@ -68,10 +163,13 @@ The risk model is trained on synthetic patient data and uses the following featu
 - Pain Level (1-10)
 - Symptoms
 
-The model predicts risk levels:
+### Risk Levels
 - **Low Risk**: Minor concerns, routine follow-up
 - **Medium Risk**: Requires attention, monitor closely
 - **High Risk**: Immediate attention required
+
+### Departments
+Cardiology, Pulmonology, Emergency, Neurology, General Surgery, General Medicine, Orthopedics, ENT, Dermatology, Gastroenterology, Vascular Surgery, Infectious Disease
 
 ## Dependencies
 
@@ -80,6 +178,8 @@ The model predicts risk levels:
 - joblib - Model serialization
 - pandas - Data manipulation
 - numpy - Numerical computing
+- pymongo - MongoDB driver
+- python-dotenv - Environment variables
 
 ## License
 
