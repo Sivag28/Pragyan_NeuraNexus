@@ -236,7 +236,7 @@ async function clearChatbot() {
 
     if (confirmed.isConfirmed) {
         try {
-            const response = await fetch(`${API_BASE_URL}/chatbot/clear`, {
+            const response = await fetch(`/chatbot/clear`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'

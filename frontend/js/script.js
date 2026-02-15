@@ -3,7 +3,6 @@
  * Handles form submission, API calls, tabs, simulation, wearable import, and fairness analysis
  */
 
-const API_BASE_URL = 'https://pragyan-neuranexus.onrender.com';
 
 // Global state
 let currentTab = 'triage';
@@ -122,7 +121,7 @@ async function handleFormSubmit(e) {
     };
     
     try {
-        const response = await fetch(`${API_BASE_URL}/predict`, {
+        const response = await fetch(`/predict`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -298,7 +297,7 @@ function hideError() {
 async function handleLogout() {
     try {
         // Call server-side logout endpoint to clear Flask session
-        const response = await fetch(`${API_BASE_URL}/logout`, {
+        const response = await fetch(`/logout`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -312,13 +311,13 @@ async function handleLogout() {
         sessionStorage.clear();
         
         // Redirect to login page
-        window.location.href = `${API_BASE_URL}/login`;
+        window.location.href = `/login`;
     } catch (error) {
         console.error('Logout error:', error);
         // Still try to clear local storage and redirect even if server call fails
         localStorage.clear();
         sessionStorage.clear();
-        window.location.href = `${API_BASE_URL}/login`;
+        window.location.href = `/login`;
     }
 }
 
@@ -491,7 +490,7 @@ async function runSimulation() {
     
     try {
         // First, initialize triage session
-        const initResponse = await fetch(`${API_BASE_URL}/init-triage-session`, {
+        const initResponse = await fetch(`/init-triage-session`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' }
         });
@@ -502,7 +501,7 @@ async function runSimulation() {
         const patients = generateRandomPatients(numPatients);
         
         // Send batch to triage
-        const response = await fetch(`${API_BASE_URL}/triage-batch-stream`, {
+        const response = await fetch(`/triage-batch-stream`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ patients: patients })
@@ -591,7 +590,7 @@ async function importWearableData() {
     try {
         const wearableData = JSON.parse(wearableJson);
         
-        const response = await fetch(`${API_BASE_URL}/wearable-import`, {
+        const response = await fetch(`/wearable-import`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
@@ -810,7 +809,7 @@ async function loadFairnessData() {
     fairnessContainer.innerHTML = '<div class="loading show"><div class="spinner"></div><p>Loading fairness analysis...</p></div>';
     
     try {
-        const response = await fetch(`${API_BASE_URL}/fairness-analysis`);
+        const response = await fetch(`/fairness-analysis`);
         const data = await response.json();
         
         if (data.success) {
@@ -900,7 +899,7 @@ async function searchPatient() {
     resultsContainer.innerHTML = '<div class="loading show"><div class="spinner"></div><p>Searching patients...</p></div>';
     
     try {
-        const response = await fetch(`${API_BASE_URL}/search-patient`, {
+        const response = await fetch(`/search-patient`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -978,7 +977,7 @@ async function viewPatientRecord(patientId) {
     recordContainer.innerHTML = '<div class="loading show"><div class="spinner"></div><p>Loading patient record...</p></div>';
     
     try {
-        const response = await fetch(`${API_BASE_URL}/get-patient-record`, {
+        const response = await fetch(`/get-patient-record`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -1093,7 +1092,7 @@ async function handleFileUpload(event) {
         const formData = new FormData();
         formData.append('file', file);
         
-        const response = await fetch(`${API_BASE_URL}/upload-document`, {
+        const response = await fetch(`/upload-document`, {
             method: 'POST',
             body: formData
         });

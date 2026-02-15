@@ -284,3 +284,14 @@ P_1771139128975,31,male,107,61,117,98,98,3,headache,hypertension,low,Dermatology
 P_1771139129112,37,female,150,71,73,99,95,10,chest_pain,asthma,low,Neurology
 P_1771139129229,60,male,142,64,62,97,93,2,abdominal_pain,diabetes,medium,General Medicine
 P_1771139140552,58,female,138,88,102,100.2,93,7,"abdominal_pain,nausea",,medium,General Medicine
+P_1771139697856,63.0,male,155.0,95.0,78.0,98.8,96.0,8,back_pain,heart_disease,high,General Medicine
+P_1771139703126,64,female,117,65,99,100,93,5,chest_pain,asthma,medium,Pulmonology
+P_1771139703264,27,female,103,88,83,97,96,1,cough,heart_disease,low,Vascular Surgery
+P_1771139703390,24,male,159,64,72,100,90,8,sore_throat,hypertension,low,Pulmonology
+P_1771139703517,29,male,115,78,62,98,96,8,fatigue,heart_disease,low,Emergency
+P_1771139703649,78,female,149,78,99,98,96,8,chest_pain,heart_disease,high,Orthopedics
+P_1771139703770,42,male,156,87,68,97,97,9,headache,,low,General Medicine
+P_1771139703888,29,female,101,69,87,100,93,1,sore_throat,,low,Pulmonology
+P_1771139704023,32,male,149,74,65,99,93,1,cough,heart_disease,low,General Medicine
+P_1771139704130,52,female,113,88,76,98,91,8,dizziness,diabetes,low,Emergency
+P_1771139704245,36,female,106,83,85,97,92,6,sore_throat,asthma,low,Vascular Surgery
