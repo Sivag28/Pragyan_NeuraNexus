@@ -26,5 +26,11 @@
   ],
   "env": {
     "FLASK_APP": "app.py"
-  }
+  },
+  "rewrites": [
+    { "source": "/dashboard", "destination": "/dashboard.html" },
+    { "source": "/login", "destination": "/login.html" }
+  ]
+  
 }
+
