@@ -70,6 +70,9 @@ ai_patient_triage/
 - **Chatbot**: AI-powered chatbot for hospital staff assistance
 - **HuggingFace Integration**: Optional NLP embeddings for advanced features
 
+## Tools and Technologies
+![tools and technologies](https://github.com/user-attachments/assets/fd9e170d-abbc-486e-9bf2-6d669f34ed74)
+
 ## Installation
 
 1. Clone the repository or navigate to the project directory
