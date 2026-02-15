@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Triage Dashboard - Unique View</title>
+    <link rel="stylesheet" href="css/dashboard-new.css" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Poppins', sans-serif; }
+    </style>
+</head>
+<body>
+    <div class="dashboard-container">
+        <!-- Header -->
+        <header class="dashboard-header fade-in">
+            <div class="dashboard-title">
+                <span class="title-icon">🏥</span>
+                <h1>Triage Dashboard</h1>
+            </div>
+            <nav class="nav-controls">
+                <a href="/" class="btn-back">← Back to Triage</a>
+            </nav>
+        </header>
+
+        <!-- Emergency Alert (Hidden by default, shown when high-risk patients exist) -->
+        <div id="emergencyAlert" class="emergency-alert" style="display: none;">
+            <span class="alert-icon">⚠️</span>
+            <div class="alert-content">
+                <h3>High-Risk Alert!</h3>
+                <p id="alertMessage">There are patients requiring immediate attention.</p>
+            </div>
+        </div>
+
+        <!-- Filter Section -->
+        <section class="filter-section fade-in">
+            <div class="filter-row">
+                <div class="filter-group">
+                    <label for="patientSelect">Patient:</label>
+                    <select id="patientSelect" class="filter-select">
+                        <option value="">(Select patient)</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label for="deptFilter">Department:</label>
+                    <select id="deptFilter" class="filter-select">
+                        <option value="">All Departments</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label for="riskFilter">Risk Level:</label>
+                    <select id="riskFilter" class="filter-select">
+                        <option value="">All Risks</option>
+                        <option value="low">Low</option>
+                        <option value="medium">Medium</option>
+                        <option value="high">High</option>
+                    </select>
+                </div>
+                <button id="applyFilters" class="btn-apply">Apply Filters</button>
+            </div>
+        </section>
+
+        <!-- Stats Cards -->
+        <section class="stats-grid fade-in">
+            <div class="stat-card">
+                <div class="stat-icon">👥</div>
+                <div class="stat-value" id="totalPatients">0</div>
+                <div class="stat-label">Total Patients</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon">🔴</div>
+                <div class="stat-value" id="highRiskCount" style="color: var(--risk-high);">0</div>
+                <div class="stat-label">High Risk</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon">🟡</div>
+                <div class="stat-value" id="mediumRiskCount" style="color: var(--risk-medium);">0</div>
+                <div class="stat-label">Medium Risk</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon">🟢</div>
+                <div class="stat-value" id="lowRiskCount" style="color: var(--risk-low);">0</div>
+                <div class="stat-label">Low Risk</div>
+            </div>
+        </section>
+
+        <!-- Main Grid -->
+        <div class="main-grid">
+            <!-- Risk Distribution - Doughnut Chart -->
+            <div class="dashboard-card card-span-4 fade-in">
+                <div class="card-header">
+                    <h2 class="card-title"><span class="card-title-icon">📊</span> Risk Distribution</h2>
+                </div>
+                <div style="position: relative; height: 250px;">
+                    <canvas id="riskChart"></canvas>
+                </div>
+            </div>
+
+            <!-- Department Capacity - Gauges -->
+            <div class="dashboard-card card-span-8 fade-in">
+                <div class="card-header">
+                    <h2 class="card-title"><span class="card-title-icon">🏥</span> Department Capacity</h2>
+                    <button id="editCapacityBtn" class="btn-edit-capacity" title="Edit Capacity">✏️ Edit</button>
+                </div>
+                <div class="gauge-container" id="gaugeContainer">
+                    <div class="loading"><div class="spinner"></div></div>
+                </div>
+            </div>
+
+            <!-- Patient Vitals - Radar Chart -->
+            <div class="dashboard-card card-span-6 fade-in">
+                <div class="card-header">
+                    <h2 class="card-title"><span class="card-title-icon">💓</span> Patient Vitals</h2>
+                    <span class="card-badge" id="patientBadge" style="background: rgba(139,92,246,0.1); color: var(--neon-purple);">Select Patient</span>
+                </div>
+                <div class="radar-container">
+                    <canvas id="vitalsRadar" height="220"></canvas>
+                    <div class="radar-info">
+                        <span class="patient-id" id="selectedPatientId">No patient selected</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Risk Assessment Details -->
+            <div class="dashboard-card card-span-6 fade-in" id="riskAssessmentCard" style="display: none;">
+                <div class="card-header">
+                    <h2 class="card-title"><span class="card-title-icon">🩺</span> Risk Assessment Details</h2>
+                    <span class="card-badge" id="assessmentBadge" style="background: rgba(0,212,255,0.1); color: var(--neon-cyan);">Assessment</span>
+                </div>
+                <div class="risk-assessment-container" id="riskAssessmentContent">
+                    <!-- Patient ID Section -->
+                    <div class="assessment-section">
+                        <div class="assessment-label">Patient ID</div>
+                        <div class="patient-id-value" id="patientIdValue">-</div>
+                    </div>
+                    
+                    <!-- Risk Level Section -->
+                    <div class="assessment-section">
+                        <div class="assessment-label">Risk Level</div>
+                        <div class="assessment-value-row">
+                            <span class="risk-level-badge" id="riskLevelBadge">-</span>
+                            <span class="confidence-text" id="riskConfidence">-</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Department Section -->
+                    <div class="assessment-section">
+                        <div class="assessment-label">Recommended Department</div>
+                        <div class="assessment-value-row">
+                            <span class="dept-value" id="recommendedDept">-</span>
+                            <span class="confidence-text" id="deptConfidence">-</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Explainability Factors -->
+                    <div class="assessment-section">
+                        <div class="assessment-label">Assessment Factors</div>
+                        <div class="explainability-list" id="explainabilityList">
+                            <!-- Factors will be populated here -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Priority Queue -->
+            <div class="dashboard-card card-span-6 fade-in">
+                <div class="card-header">
+                    <h2 class="card-title"><span class="card-title-icon">📋</span> Priority Queue</h2>
+                    <span class="card-badge" style="background: rgba(255,0,255,0.1); color: var(--neon-magenta);" id="queueCount">0 patients</span>
+                </div>
+                <div class="queue-container" id="queueContainer">
+                    <div class="empty-state">
+                        <div class="empty-icon">📭</div>
+                        <p>No patients in queue</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Age Group Risk - KPI Cards (Compact, no scroll) -->
+            <div class="dashboard-card card-span-6 fade-in">
+                <div class="card-header">
+                    <h2 class="card-title"><span class="card-title-icon">👤</span> High-Risk by Age</h2>
+                </div>
+                <div class="age-kpi-grid" id="ageChartContainer">
+                    <div class="loading"><div class="spinner"></div></div>
+                </div>
+            </div>
+
+            <!-- Fairness Insights -->
+            <div class="dashboard-card card-span-6 fade-in">
+                <div class="card-header">
+                    <h2 class="card-title"><span class="card-title-icon">⚖️</span> Fairness Insights</h2>
+                </div>
+                <div class="insights-grid" id="insightsGrid">
+                    <div class="empty-state">
+                        <div class="empty-icon">📈</div>
+                        <p>Loading insights...</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/dashboard-new.js"></script>
+</body>
+</html>

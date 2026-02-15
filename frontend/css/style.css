@@ -1,0 +1,30 @@
+/* 
+ * AI Patient Triage System - Custom Styles
+ * Note: Most styles are embedded in index.html for this version
+ * This file can be used for additional custom styles if needed
+ */
+
+/* Additional custom styles can be added here */
+:root {
+    --primary-color: #667eea;
+    --secondary-color: #764ba2;
+    --success-color: #48c6ef;
+    --warning-color: #f093fb;
+    --danger-color: #fa709a;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .container {
+        margin: 10px;
+        border-radius: 10px;
+    }
+    
+    .header h1 {
+        font-size: 1.5rem;
+    }
+}

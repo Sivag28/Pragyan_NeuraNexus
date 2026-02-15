@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Patient Triage System | Intelligent Risk Assessment</title>
+    <link href="css/main.css" rel="stylesheet">
+    <link href="css/chatbot.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+<body>
+    <div class="app-container">
+        <!-- Header -->
+        <header class="app-header">
+            <div class="header-top-row">
+                <div class="brand-section">
+                    <div class="brand-icon">🏥</div>
+                    <div class="brand-text">
+                        <h1>AI Patient Triage</h1>
+                        <p>Intelligent Risk Assessment & Department Routing</p>
+                    </div>
+                </div>
+                
+                <div class="header-actions">
+                    <button class="logout-btn" onclick="handleLogout()" title="Logout">
+                        <span class="logout-icon">🚪</span>
+                        <span class="logout-text">Logout</span>
+                    </button>
+                </div>
+            </div>
+
+            <nav class="nav-tabs" role="tablist" aria-label="Main tabs">
+                <button class="nav-tab active" data-tab="triage" onclick="switchTab('triage')">⚡ Triage</button>
+                <button class="nav-tab" data-tab="simulation" onclick="switchTab('simulation')">🚑 Simulation</button>
+                <button class="nav-tab" data-tab="wearable" onclick="switchTab('wearable')">⌚ Wearable</button>
+                <button class="nav-tab" data-tab="ehr" onclick="switchTab('ehr')">🏥 EHR/EMR</button>
+                <button class="nav-tab" data-tab="fairness" onclick="switchTab('fairness')">⚖️ Fairness</button>
+                <button class="nav-tab" onclick="window.location.href='/dashboard'">📊 Dashboard</button>
+            </nav>
+        </header>
+
+        <!-- Main Content -->
+        <div class="tab-content active" id="triageTab">
+            <div class="main-grid">
+            <!-- Input Section -->
+            <div class="card">
+                <div class="card-header">
+                    <h2 class="card-title">
+                        <span class="card-title-icon">📋</span>
+                        Patient Information
+                    </h2>
+                    <div class="upload-container">
+                        <input type="file" id="patientDocumentUpload" accept=".pdf,.docx,.jpg,.jpeg,.png" style="display: none;" onchange="handleFileUpload(event)">
+                        <button class="btn-icon" onclick="document.getElementById('patientDocumentUpload').click()">📄 Upload</button>
+                    </div>
+                </div>
+
+                <form id="triageForm">
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label>Age (years)</label>
+                            <input type="number" id="age" placeholder="Enter age" required min="1" max="150">
+                        </div>
+
+                        <div class="form-group">
+                            <label>Gender</label>
+                            <select id="gender">
+                                <option value="">Select gender</option>
+                                <option value="male">Male</option>
+                                <option value="female">Female</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Blood Pressure (Systolic)</label>
+                            <input type="number" id="blood_pressure_systolic" placeholder="mmHg" required min="50" max="250">
+                        </div>
+
+                        <div class="form-group">
+                            <label>Blood Pressure (Diastolic)</label>
+                            <input type="number" id="blood_pressure_diastolic" placeholder="mmHg" required min="30" max="150">
+                        </div>
+
+                        <div class="form-group">
+                            <label>Heart Rate (bpm)</label>
+                            <input type="number" id="heart_rate" placeholder="bpm" required min="30" max="250">
+                        </div>
+
+                        <div class="form-group">
+                            <label>Temperature (°F)</label>
+                            <input type="number" id="temperature" placeholder="°F" required min="90" max="110" step="0.1">
+                        </div>
+
+                        <div class="form-group">
+                            <label>Oxygen Saturation (%)</label>
+                            <input type="number" id="oxygen_saturation" placeholder="%" required min="50" max="100">
+                        </div>
+
+                        <div class="form-group">
+                            <label>Pain Level (1-10)</label>
+                            <input type="number" id="pain_level" placeholder="1-10" required min="1" max="10">
+                        </div>
+
+                        <div class="form-group full-width">
+                            <label>Symptoms</label>
+                            <textarea id="symptoms" rows="3" placeholder="Describe symptoms (e.g., chest pain, shortness of breath)"></textarea>
+                            <div class="input-actions">
+                                <button type="button" class="btn-icon" onclick="startVoiceInput()">🎤 Speak</button>
+                                <button type="button" class="btn-icon" onclick="loadSampleData()">📝 Sample</button>
+                            </div>
+                        </div>
+
+                        <div class="form-group full-width">
+                            <label>Pre-existing Conditions</label>
+                            <select id="pre_conditions">
+                                <option value="">None</option>
+                                <option value="diabetes">Diabetes</option>
+                                <option value="hypertension">Hypertension</option>
+                                <option value="heart_disease">Heart Disease</option>
+                                <option value="asthma">Asthma</option>
+                                <option value="copd">COPD</option>
+                                <option value="arthritis">Arthritis</option>
+                                <option value="thyroid">Thyroid</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="submit" class="btn-submit">🔍 Assess Risk</button>
+                        
+                    </div>
+                </form>
+
+                <div class="loading" id="loading">
+                    <div class="spinner"></div>
+                    <p>Analyzing patient data with AI...</p>
+                </div>
+
+                <div class="error-message" id="errorMessage"></div>
+            </div>
+
+            <!-- Results Section -->
+            <div class="card">
+                <div class="card-header">
+                    <h2 class="card-title">
+                        <span class="card-title-icon">📊</span>
+                        Assessment Results
+                    </h2>
+                </div>
+
+                <div class="stats-grid">
+                    <div class="stat-box">
+                        <div class="stat-value" id="riskScore">--</div>
+                        <div class="stat-label">Risk Level</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-value" id="confidenceScore">--</div>
+                        <div class="stat-label">Confidence</div>
+                    </div>
+                </div>
+
+                <div class="result-card" id="resultSection">
+                    <div class="result-header">
+                        <div class="result-icon" id="resultIcon">⚠️</div>
+                        <div>
+                            <div class="result-title" id="resultTitle">Risk Assessment</div>
+                            <div class="result-meta" id="resultMeta">Confidence: --</div>
+                        </div>
+                    </div>
+
+                    <div class="result-details">
+                        <div class="result-detail-item">
+                            <span>Recommended Department</span>
+                            <strong id="recommendedDept">--</strong>
+                        </div>
+                        <div class="result-detail-item">
+                            <span>Department Confidence</span>
+                            <strong id="deptConfidence">--</strong>
+                        </div>
+                    </div>
+
+                    <div class="explainability-section">
+                        <h4>🔬 Contributing Factors</h4>
+                        <div id="explainabilityFactors"></div>
+                    </div>
+                </div>
+            </div>
+            </div>
+        </div>
+
+        <!-- Simulation Tab -->
+        <div class="tab-content" id="simulationTab">
+            <div class="card">
+                <div class="card-header">
+                    <h2 class="card-title">
+                        <span class="card-title-icon">🚑</span>
+                        Real-Time Triage Simulation
+                    </h2>
+                    <button class="btn-submit" style="width:auto;margin:0;" onclick="runSimulation()">▶️ Run Simulation</button>
+                </div>
+                <div class="simulation-controls">
+                    <div class="form-group">
+                        <label>Category Filter</label>
+                        <select id="simulationCategory">
+                            <option value="all">All Patients</option>
+                            <option value="high">High Risk</option>
+                            <option value="medium">Medium Risk</option>
+                            <option value="low">Low Risk</option>
+                            <option value="Cardiology">Cardiology</option>
+                            <option value="Pulmonology">Pulmonology</option>
+                            <option value="Emergency">Emergency</option>
+                            <option value="Neurology">Neurology</option>
+                            <option value="General Surgery">General Surgery</option>
+                            <option value="General Medicine">General Medicine</option>
+                            <option value="Orthopedics">Orthopedics</option>
+                            <option value="ENT">ENT</option>
+                            <option value="Dermatology">Dermatology</option>
+                            <option value="Gastroenterology">Gastroenterology</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Number of Patients</label>
+                        <input type="number" id="numPatients" value="10" min="1" max="100">
+                    </div>
+                </div>
+                <div class="patient-queue" id="patientQueue">
+                    <p style="text-align: center; color: var(--text-secondary); padding: 36px;">Click "Run Simulation" to simulate multiple patients</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Wearable Tab -->
+        <div class="tab-content" id="wearableTab">
+            <div class="card">
+                <div class="card-header">
+                    <h2 class="card-title">
+                        <span class="card-title-icon">⌚</span>
+                        Wearable Device Integration
+                    </h2>
+                </div>
+                <div class="form-group" style="margin-bottom: 18px;">
+                    <label>Import from JSON</label>
+                    <textarea id="wearableJson" rows="4" placeholder='{"age": 45, "heart_rate": 72, "systolic_bp": 120, "diastolic_bp": 80, "body_temperature": 98.6, "spo2": 98}'></textarea>
+                </div>
+                <button type="button" class="btn-submit" style="width: auto; margin-top: 10px;" onclick="importWearableData()">📥 Import Data</button>
+                <button type="button" class="btn-icon" style="margin-top: 10px;" onclick="loadSampleWearableData()">📝 Load Sample</button>
+                
+                <!-- Wearable Results (rendered after import) -->
+                <div class="stats-grid" style="margin-top:18px;">
+                    <div class="stat-box">
+                        <div class="stat-value" id="wearableRiskScore">--</div>
+                        <div class="stat-label">Risk Level</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-value" id="wearableConfidenceScore">--</div>
+                        <div class="stat-label">Confidence</div>
+                    </div>
+                </div>
+
+                <div class="result-card" id="wearableResultSection" style="margin-top:12px;">
+                    <div class="result-header">
+                        <div class="result-icon" id="wearableResultIcon">⚠️</div>
+                        <div>
+                            <div class="result-title" id="wearableResultTitle">Wearable Risk Assessment</div>
+                            <div class="result-meta" id="wearableResultMeta">Confidence: --</div>
+                        </div>
+                    </div>
+
+                    <div class="result-details">
+                        <div class="result-detail-item">
+                            <span>Recommended Department</span>
+                            <strong id="wearableRecommendedDept">--</strong>
+                        </div>
+                        <div class="result-detail-item">
+                            <span>Department Confidence</span>
+                            <strong id="wearableDeptConfidence">--</strong>
+                        </div>
+                    </div>
+
+                    <div class="explainability-section">
+                        <h4>🔬 Contributing Factors</h4>
+                        <div id="wearableExplainabilityFactors"></div>
+                    </div>
+                </div>
+                
+                <!-- Patient details for wearable import -->
+                <div class="card" style="margin-top:12px;">
+                    <div class="card-header"><h3 class="card-title"><span class="card-title-icon">👤</span> Patient Details</h3></div>
+                    <div class="card-body" id="wearablePatientDetails" style="padding:12px;">
+                        <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">
+                            <div><strong>Age:</strong> <span id="w_age">--</span></div>
+                            <div><strong>Gender:</strong> <span id="w_gender">--</span></div>
+                            <div><strong>BP (S/D):</strong> <span id="w_bp">--</span></div>
+                            <div><strong>Heart Rate:</strong> <span id="w_hr">--</span></div>
+                            <div><strong>Temperature:</strong> <span id="w_temp">--</span></div>
+                            <div><strong>SpO2:</strong> <span id="w_spo2">--</span></div>
+                            <div><strong>Pain Level:</strong> <span id="w_pain">--</span></div>
+                            <div style="grid-column:1 / -1"><strong>Symptoms:</strong> <span id="w_symptoms">--</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- EHR/EMR Tab -->
+    <div class="tab-content" id="ehrTab">
+        <div class="main-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+            <!-- Patient Search -->
+            <div class="card">
+                <div class="card-header">
+                    <h2 class="card-title">
+                        <span class="card-title-icon">🔍</span>
+                        Patient Search
+                    </h2>
+                </div>
+                <div class="form-group">
+                    <label>Search by Patient ID or Name</label>
+                    <input type="text" id="ehrPatientSearch" placeholder="Enter Patient ID or Name">
+                </div>
+                <button type="button" class="btn-submit" style="width: auto;" onclick="searchPatient()">🔍 Search</button>
+                
+                <div id="patientSearchResults" style="margin-top: 20px;">
+                    <p style="text-align: center; color: var(--text-secondary);">Search for a patient to view their EHR</p>
+                </div>
+
+                
+            </div>
+
+            <!-- Recent Patients -->
+            <div class="card">
+                <div class="card-header">
+                    <h2 class="card-title">
+                        <span class="card-title-icon">📋</span>
+                        Recent Patients
+                    </h2>
+                </div>
+                <div id="recentPatientsList" class="patient-list">
+                    <p style="text-align: center; color: var(--text-secondary); padding: 20px;">No recent patients</p>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+
+    <!-- Fairness Tab -->
+    <div class="tab-content" id="fairnessTab">
+        <div class="card">
+            <div class="card-header">
+                <h2 class="card-title">
+                    <span class="card-title-icon">⚖️</span>
+                    Fairness Analysis
+                </h2>
+            </div>
+            <div id="fairnessData">
+                <p style="text-align: center; color: var(--text-secondary); padding: 36px;">Click on a tab or wait to load fairness analysis</p>
+            </div>
+            <div class="risk-legend">
+                <div class="legend-item">
+                    <span class="legend-color high"></span>
+                    <span>High Risk</span>
+                </div>
+                <div class="legend-item">
+                    <span class="legend-color medium"></span>
+                    <span>Medium Risk</span>
+                </div>
+                <div class="legend-item">
+                    <span class="legend-color low"></span>
+                    <span>Low Risk</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Chatbot Widget -->
+<div class="chatbot-container">
+    <!-- Chatbot Icon (Always visible) -->
+    <button class="chatbot-icon" id="chatbotToggle" title="Hospital Assistant">
+        💬
+    </button>
+    
+    <!-- Chatbot Window (Hidden by default) -->
+    <div class="chatbot-window" id="chatbotWindow">
+        <div class="chatbot-header">
+            <h3>Hospital Assistant</h3>
+            <div class="chatbot-controls">
+                <button class="chatbot-clear-btn" id="chatbotClear" title="Clear chat">🗑️</button>
+                <button class="chatbot-close-btn" id="chatbotClose">✕</button>
+            </div>
+        </div>
+        
+        <div class="chatbot-messages" id="chatbotMessages">
+            <div class="chatbot-message bot-message">
+                <p>Hello! 👋 I'm your Hospital Assistant. I can help you with:</p>
+                <ul style="margin-top: 10px; padding-left: 20px;">
+                    <li>Department information</li>
+                    <li>Patient triage guidance</li>
+                    <li>Emergency procedures</li>
+                    <li>Wait times</li>
+                    <li>Admission process</li>
+                    <li>Vital signs interpretation</li>
+                </ul>
+                <p style="margin-top: 10px;">How can I assist you today?</p>
+            </div>
+        </div>
+        
+        <div class="chatbot-input-area">
+            <form id="chatbotForm" onsubmit="sendChatMessage(event)">
+                <input 
+                    type="text" 
+                    id="chatbotInput" 
+                    class="chatbot-input" 
+                    placeholder="Ask me anything..." 
+                    autocomplete="off"
+                >
+                <button type="submit" class="chatbot-send-btn">Send</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script src="js/script.js"></script>
+<script src="js/chatbot.js"></script>
+</body>
+</html>

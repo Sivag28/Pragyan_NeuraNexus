@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Patient Triage | Login</title>
+    <link href="css/login.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+<body>
+    <div class="login-container">
+        <!-- Left Side - Visual/Branding -->
+        <div class="login-visual">
+            <div class="visual-content">
+                <div class="logo-section">
+                    <div class="logo-icon">
+                        <i class="fas fa-heart-pulse"></i>
+                    </div>
+                    <h1 class="logo-text">AI Patient Triage</h1>
+                    <p class="logo-tagline">Intelligent Risk Assessment & Department Routing</p>
+                </div>
+                
+                <div class="floating-elements">
+                    <div class="floating-card card-1">
+                        <i class="fas fa-user-md"></i>
+                        <span>Smart Triage</span>
+                    </div>
+                    <div class="floating-card card-2">
+                        <i class="fas fa-chart-line"></i>
+                        <span>Real-time Analytics</span>
+                    </div>
+                    <div class="floating-card card-3">
+                        <i class="fas fa-shield-alt"></i>
+                        <span>Fair & Accurate</span>
+                    </div>
+                    <div class="floating-card card-4">
+                        <i class="fas fa-hospital"></i>
+                        <span>Department Routing</span>
+                    </div>
+                </div>
+                
+                <div class="stats-preview">
+                    <div class="stat-item">
+                        <span class="stat-number">99%</span>
+                        <span class="stat-label">Accuracy</span>
+                    </div>
+                    <div class="stat-divider"></div>
+                    <div class="stat-item">
+                        <span class="stat-number">12+</span>
+                        <span class="stat-label">Departments</span>
+                    </div>
+                    <div class="stat-divider"></div>
+                    <div class="stat-item">
+                        <span class="stat-number">24/7</span>
+                        <span class="stat-label">Active</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="visual-background">
+                <div class="grid-pattern"></div>
+                <div class="gradient-orb orb-1"></div>
+                <div class="gradient-orb orb-2"></div>
+                <div class="gradient-orb orb-3"></div>
+            </div>
+        </div>
+        
+        <!-- Right Side - Forms -->
+        <div class="login-form-section">
+            <div class="form-container">
+                <div class="form-header">
+                    <h2>Welcome Back</h2>
+                    <p>Sign in to access the patient triage system</p>
+                </div>
+                
+                <!-- Toggle Buttons -->
+                <div class="form-toggle">
+                    <button class="toggle-btn active" data-form="login">
+                        <i class="fas fa-sign-in-alt"></i> Login
+                    </button>
+                    <button class="toggle-btn" data-form="register">
+                        <i class="fas fa-user-plus"></i> Register
+                    </button>
+                </div>
+                
+                <!-- Login Form -->
+                <form id="loginForm" class="auth-form active">
+                    <div class="form-group">
+                        <label for="loginEmail">
+                            <i class="fas fa-envelope"></i> Email Address
+                        </label>
+                        <div class="input-wrapper">
+                            <input type="email" id="loginEmail" placeholder="Enter your email" required>
+                            <div class="input-icon">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="loginPassword">
+                            <i class="fas fa-lock"></i> Password
+                        </label>
+                        <div class="input-wrapper">
+                            <input type="password" id="loginPassword" placeholder="Enter your password" required>
+                            <div class="input-icon">
+                                <i class="fas fa-lock"></i>
+                            </div>
+                            <button type="button" class="password-toggle" onclick="togglePassword('loginPassword')">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="form-options">
+                        <label class="checkbox-wrapper">
+                            <input type="checkbox" id="rememberMe">
+                            <span class="checkmark"></span>
+                            Remember me
+                        </label>
+                        <a href="#" class="forgot-link">Forgot password?</a>
+                    </div>
+                    
+                    <button type="submit" class="btn-primary">
+                        <span>Sign In</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </button>
+                </form>
+                
+                <!-- Register Form -->
+                <form id="registerForm" class="auth-form">
+                    <div class="form-group">
+                        <label for="registerName">
+                            <i class="fas fa-user"></i> Full Name
+                        </label>
+                        <div class="input-wrapper">
+                            <input type="text" id="registerName" placeholder="Enter your full name" required>
+                            <div class="input-icon">
+                                <i class="fas fa-user"></i>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="registerEmail">
+                            <i class="fas fa-envelope"></i> Email Address
+                        </label>
+                        <div class="input-wrapper">
+                            <input type="email" id="registerEmail" placeholder="Enter your email" required>
+                            <div class="input-icon">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="registerPassword">
+                            <i class="fas fa-lock"></i> Password
+                        </label>
+                        <div class="input-wrapper">
+                            <input type="password" id="registerPassword" placeholder="Create a password" required minlength="6">
+                            <div class="input-icon">
+                                <i class="fas fa-lock"></i>
+                            </div>
+                            <button type="button" class="password-toggle" onclick="togglePassword('registerPassword')">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                        </div>
+                        <span class="input-hint">Minimum 6 characters</span>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="registerConfirmPassword">
+                            <i class="fas fa-lock"></i> Confirm Password
+                        </label>
+                        <div class="input-wrapper">
+                            <input type="password" id="registerConfirmPassword" placeholder="Confirm your password" required>
+                            <div class="input-icon">
+                                <i class="fas fa-lock"></i>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-options">
+                        <label class="checkbox-wrapper terms-checkbox">
+                            <input type="checkbox" id="acceptTerms" required>
+                            <span class="checkmark"></span>
+                            <span>I agree to the <a href="#">Terms & Conditions</a></span>
+                        </label>
+                    </div>
+                    
+                    <button type="submit" class="btn-primary">
+                        <span>Create Account</span>
+                        <i class="fas fa-user-plus"></i>
+                    </button>
+                </form>
+                
+                <div class="form-footer">
+                    <p>Secure login with encrypted connection</p>
+                    <div class="security-badges">
+                        <span><i class="fas fa-shield-alt"></i> SSL Secured</span>
+                        <span><i class="fas fa-lock"></i> 256-bit Encryption</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // Form Toggle Logic
+        const toggleBtns = document.querySelectorAll('.toggle-btn');
+        const authForms = document.querySelectorAll('.auth-form');
+        
+        toggleBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const formType = btn.dataset.form;
+                
+                // Update toggle buttons
+                toggleBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                
+                // Update forms
+                authForms.forEach(form => {
+                    form.classList.remove('active');
+                    if (form.id === formType + 'Form') {
+                        form.classList.add('active');
+                    }
+                });
+                
+                // Update header
+                const header = document.querySelector('.form-header h2');
+                const subheader = document.querySelector('.form-header p');
+                if (formType === 'login') {
+                    header.textContent = 'Welcome Back';
+                    subheader.textContent = 'Sign in to access the patient triage system';
+                } else {
+                    header.textContent = 'Create Account';
+                    subheader.textContent = 'Register to start using the triage system';
+                }
+            });
+        });
+        
+        // Password Toggle
+        function togglePassword(inputId) {
+            const input = document.getElementById(inputId);
+            const icon = input.nextElementSibling.nextElementSibling.querySelector('i');
+            
+            if (input.type === 'password') {
+                input.type = 'text';
+                icon.classList.remove('fa-eye');
+                icon.classList.add('fa-eye-slash');
+            } else {
+                input.type = 'password';
+                icon.classList.remove('fa-eye-slash');
+                icon.classList.add('fa-eye');
+            }
+        }
+        
+        // Login Form Submission
+        document.getElementById('loginForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const email = document.getElementById('loginEmail').value;
+            const password = document.getElementById('loginPassword').value;
+            const rememberMe = document.getElementById('rememberMe').checked;
+            
+            const submitBtn = e.target.querySelector('.btn-primary');
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Signing in...';
+            
+            try {
+                const response = await fetch('/login', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ email, password, remember_me: rememberMe })
+                });
+                
+                const data = await response.json();
+                
+                if (data.success) {
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Welcome!',
+                        text: 'Login successful. Redirecting...',
+                        timer: 1500,
+                        showConfirmButton: false
+                    }).then(() => {
+                        window.location.href = data.redirect || '/';
+                    });
+                } else {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Login Failed',
+                        text: data.error || 'Invalid email or password'
+                    });
+                }
+            } catch (error) {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: 'An error occurred. Please try again.'
+                });
+            } finally {
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = '<span>Sign In</span><i class="fas fa-arrow-right"></i>';
+            }
+        });
+        
+        // Register Form Submission
+        document.getElementById('registerForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const name = document.getElementById('registerName').value;
+            const email = document.getElementById('registerEmail').value;
+            const password = document.getElementById('registerPassword').value;
+            const confirmPassword = document.getElementById('registerConfirmPassword').value;
+            const acceptTerms = document.getElementById('acceptTerms').checked;
+            
+            if (password !== confirmPassword) {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Password Mismatch',
+                    text: 'Passwords do not match. Please try again.'
+                });
+                return;
+            }
+            
+            if (password.length < 6) {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Weak Password',
+                    text: 'Password must be at least 6 characters long.'
+                });
+                return;
+            }
+            
+            const submitBtn = e.target.querySelector('.btn-primary');
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Creating account...';
+            
+            try {
+                const response = await fetch('/register', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ name, email, password, accept_terms: acceptTerms })
+                });
+                
+                const data = await response.json();
+                
+                if (data.success) {
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Account Created!',
+                        text: 'Your account has been created successfully. Please login.',
+                        timer: 2000,
+                        showConfirmButton: false
+                    }).then(() => {
+                        // Switch to login form
+                        document.querySelector('[data-form="login"]').click();
+                        // Clear register form
+                        document.getElementById('registerForm').reset();
+                    });
+                } else {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Registration Failed',
+                        text: data.error || 'Could not create account. Email may already be registered.'
+                    });
+                }
+            } catch (error) {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: 'An error occurred. Please try again.'
+                });
+            } finally {
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = '<span>Create Account</span><i class="fas fa-user-plus"></i>';
+            }
+        });
+        
+        // Add floating animation to cards
+        document.querySelectorAll('.floating-card').forEach((card, index) => {
+            card.style.animationDelay = `${index * 0.5}s`;
+        });
+    </script>
+</body>
+</html>

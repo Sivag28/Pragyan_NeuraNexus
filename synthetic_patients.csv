@@ -1,0 +1,224 @@
+patient_id,age,gender,blood_pressure_systolic,blood_pressure_diastolic,heart_rate,temperature,oxygen_saturation,pain_level,symptoms,pre_existing_conditions,risk_level,recommended_department
+P001,35.0,Female,163.0,90.0,81.0,99.7,99.0,5,shortness_of_breath,heart_disease,medium,Pulmonology
+P002,70.0,Female,172.0,103.0,64.0,98.6,98.0,1,shortness_of_breath_fatigue,migraine,medium,Pulmonology
+P003,60.0,Female,162.0,102.0,78.0,98.0,99.0,8,cough_blood,asthma,medium,Pulmonology
+P004,41.0,Female,144.0,78.0,99.0,100.5,100.0,6,headache_nausea,diabetes,medium,Neurology
+P005,61.0,Male,156.0,99.0,76.0,98.6,92.0,4,shortness_of_breath_confusion,smoker,medium,Emergency
+P006,68.0,Female,200.0,80.0,92.0,98.0,98.0,6,fever_fatigue,copd,medium,General Medicine
+P007,62.0,Female,165.0,92.0,84.0,99.6,100.0,5,fever_chills,hypertension,medium,Infectious Disease
+P008,24.0,Male,152.0,69.0,94.0,99.6,93.0,10,fatigue,asthma,medium,General Medicine
+P009,52.0,Male,173.0,84.0,90.0,99.1,100.0,3,mild_discomfort,hypertension,medium,General Medicine
+P010,41.0,Female,160.0,72.0,90.0,98.3,97.0,6,severe_chest_pain,none,medium,Emergency
+P011,20.0,Male,137.0,75.0,77.0,99.2,93.0,3,mild_fatigue,none,medium,General Medicine
+P012,63.0,Male,185.0,83.0,74.0,99.7,100.0,6,mild_discomfort,thyroid,medium,General Medicine
+P013,62.0,Male,194.0,79.0,72.0,99.2,100.0,2,headache_mild_cough,heart_disease,medium,Neurology
+P014,70.0,Male,174.0,91.0,96.0,101.4,96.0,3,chest_pain,hypertension,high,Cardiology
+P015,53.0,Female,157.0,81.0,85.0,98.9,98.0,6,persistent_cough,none,medium,Pulmonology
+P016,75.0,Male,177.0,98.0,82.0,100.5,95.0,3,chest_pain_palpitations,none,high,Cardiology
+P017,52.0,Male,151.0,93.0,85.0,98.3,94.0,4,headache_nausea,arthritis,medium,Neurology
+P018,59.0,Female,151.0,76.0,100.0,99.6,98.0,6,fatigue_cough,arthritis,medium,Pulmonology
+P019,23.0,Male,129.0,80.0,73.0,99.4,92.0,2,dizziness,none,low,Neurology
+P020,21.0,Female,153.0,82.0,66.0,100.0,93.0,4,fatigue_shortness_of_breath,heart_disease,medium,Pulmonology
+P021,22.0,Male,140.0,67.0,92.0,99.5,100.0,6,chest_discomfort,hypertension,low,Cardiology
+P022,48.0,Female,167.0,79.0,92.0,98.2,97.0,2,headache_nausea,none,low,Neurology
+P023,30.0,Male,160.0,81.0,67.0,98.4,97.0,3,mild_discomfort,none,low,General Medicine
+P024,47.0,Male,157.0,72.0,73.0,100.6,95.0,6,fatigue,none,medium,General Medicine
+P025,69.0,Female,186.0,80.0,89.0,99.6,100.0,4,fatigue_cough,diabetes,medium,Pulmonology
+P026,72.0,Male,172.0,92.0,68.0,98.2,100.0,1,joint_pain_swelling,copd,medium,Orthopedics
+P027,18.0,Male,125.0,82.0,73.0,98.0,95.0,3,cough_weakness,none,low,Pulmonology
+P028,42.0,Female,171.0,81.0,68.0,99.8,94.0,5,chest_pain_palpitations,none,medium,Cardiology
+P029,18.0,Male,130.0,66.0,77.0,99.0,92.0,5,abdominal_pain_fever,asthma,medium,General Surgery
+P030,29.0,Female,157.0,67.0,82.0,100.2,93.0,1,headache_nausea,none,medium,Neurology
+P031,61.0,Female,183.0,85.0,90.0,98.4,99.0,8,chest_pain_sweating,smoker,medium,Cardiology
+P032,24.0,Female,139.0,88.0,89.0,97.9,97.0,4,persistent_cough,heart_disease,low,Pulmonology
+P033,60.0,Female,157.0,97.0,94.0,99.6,93.0,9,shortness_of_breath_fatigue,none,high,Pulmonology
+P034,70.0,Male,174.0,94.0,98.0,100.8,95.0,3,chest_pain_difficulty_breathing,none,high,Emergency
+P035,33.0,Male,136.0,71.0,72.0,98.6,93.0,2,mild_cough,none,low,General Medicine
+P036,23.0,Male,147.0,86.0,99.0,101.2,92.0,2,abdominal_pain_nausea,thyroid,medium,Gastroenterology
+P037,27.0,Male,143.0,73.0,69.0,99.9,100.0,3,shortness_of_breath_confusion,asthma,low,Emergency
+P038,53.0,Male,183.0,78.0,85.0,100.1,92.0,10,persistent_cough,copd,high,Pulmonology
+P039,53.0,Male,167.0,86.0,71.0,97.7,98.0,2,dizziness,none,medium,Neurology
+P040,31.0,Female,141.0,86.0,81.0,98.2,97.0,1,shortness_of_breath_wheezing,arthritis,low,Pulmonology
+P041,57.0,Female,164.0,77.0,61.0,98.6,96.0,3,general_discomfort,none,medium,General Medicine
+P042,78.0,Male,208.0,90.0,87.0,99.7,98.0,7,chest_pain_difficulty_breathing,copd,medium,Emergency
+P043,19.0,Female,144.0,71.0,67.0,98.8,96.0,8,abdominal_pain_fever,none,medium,General Surgery
+P044,23.0,Male,116.0,82.0,79.0,97.5,97.0,3,fatigue_cough,hypertension,low,Pulmonology
+P045,59.0,Female,188.0,86.0,79.0,100.6,99.0,1,persistent_cough,migraine,medium,Pulmonology
+P046,45.0,Female,166.0,73.0,66.0,98.1,92.0,6,fatigue_shortness_of_breath,none,medium,Pulmonology
+P047,55.0,Female,177.0,76.0,96.0,98.0,99.0,4,shortness_of_breath_wheezing,smoker,medium,Pulmonology
+P048,35.0,Male,144.0,91.0,97.0,99.3,97.0,5,fever_cough,diabetes,medium,Pulmonology
+P049,75.0,Male,204.0,102.0,81.0,98.7,95.0,2,fever_fatigue,diabetes,medium,General Medicine
+P050,41.0,Male,153.0,95.0,99.0,100.8,95.0,7,fever_chills,thyroid,medium,Infectious Disease
+P_1771064686440,55.0,,122.0,94.0,89.0,98.9,99.0,3,fatigue,,low,Vascular Surgery
+P_1771064751647,70.0,,122.0,94.0,50.0,98.9,50.0,3,fatigue,,low,General Medicine
+P_1771064936881,45.0,,122.0,93.0,92.0,98.4,97.0,5,abdominal pain,,low,Orthopedics
+P_1771065180491,39.0,,124.0,84.0,67.0,98.4,97.0,5,fatigue,,low,General Medicine
+P_1771065295600,69.0,,159.0,82.0,80.0,97.7,96.0,3,headache,,medium,Orthopedics
+P_1771073720635,52.0,,122.0,87.0,88.0,99.0,98.0,3,dizziness,,low,Vascular Surgery
+P_1771074831984,45.0,male,145.0,95.0,95.0,99.5,94.0,6,Chest pain with shortness of breath,hypertension,high,Pulmonology
+P_1771075118880,52.0,male,135.0,85.0,78.0,98.4,97.0,3,routine_checkup,,medium,Orthopedics
+P_1771076285088,45.0,male,145.0,95.0,95.0,99.5,94.0,6,Chest pain with shortness of breath,hypertension,high,Pulmonology
+P_1771083975403,45.0,female,145.0,95.0,95.0,99.5,94.0,6,Chest pain with shortness of breath,hypertension,high,Pulmonology
+P_1771085471499,52.0,male,135.0,85.0,78.0,98.4,97.0,3,routine_checkup,,medium,Orthopedics
+P_1771090612258,45.0,male,145.0,95.0,95.0,99.5,94.0,6,Rheumatoid,arthritis,high,Pulmonology
+P_1771090823522,45.0,male,145.0,95.0,95.0,99.5,95.0,6,Rheumatoid,arthritis,high,Pulmonology
+P_1771092649641,45.0,male,145.0,95.0,95.0,99.5,94.0,6,Rheumatoid,arthritis,high,Pulmonology
+P_1771093325340,25.0,female,105.0,65.0,80.0,100.4,97.0,4,"Sore throat, cough, mild fever",asthma,low,Cardiology
+P_1771093679991,32.0,female,110.0,70.0,72.0,98.6,99.0,1,minor_headache,,low,ENT
+P_1771093903018,72.0,female,128.0,82.0,65.0,97.8,92.0,3,"dizziness,fatigue",,medium,General Medicine
+P_1771094219855,28.0,male,118.0,76.0,82.0,98.2,98.0,2,sore_throat,,low,Orthopedics
+P_1771098360876,68.0,male,165.0,100.0,110.0,101.2,88.0,8,"Severe chest pain radiating to arm, shortness of breath",,high,Emergency
+P_SIM_1,65.0,female,136.0,74.0,115.0,98.0,93.0,9,cough,diabetes,medium,Orthopedics
+P_SIM_10,28.0,male,111.0,85.0,115.0,97.0,91.0,1,fatigue,heart_disease,low,Vascular Surgery
+P_SIM_11,36.0,female,109.0,86.0,112.0,97.0,97.0,3,fatigue,,low,Vascular Surgery
+P_SIM_12,64.0,male,158.0,88.0,75.0,98.0,96.0,9,back_pain,,medium,Orthopedics
+P_SIM_13,60.0,male,159.0,87.0,61.0,100.0,96.0,6,headache,hypertension,medium,Pulmonology
+P_SIM_14,41.0,female,106.0,86.0,88.0,98.0,93.0,3,dizziness,heart_disease,low,Vascular Surgery
+P_SIM_15,37.0,male,110.0,63.0,102.0,100.0,90.0,4,fatigue,heart_disease,low,Neurology
+P_SIM_16,58.0,female,115.0,76.0,69.0,100.0,97.0,1,chest_pain,hypertension,low,Cardiology
+P_SIM_17,37.0,female,117.0,61.0,116.0,100.0,96.0,5,abdominal_pain,hypertension,low,Neurology
+P_SIM_18,70.0,female,151.0,61.0,77.0,98.0,91.0,9,headache,heart_disease,medium,Orthopedics
+P_SIM_19,39.0,male,111.0,64.0,61.0,99.0,93.0,1,shortness_of_breath,diabetes,low,ENT
+P_SIM_2,69.0,female,101.0,66.0,65.0,97.0,94.0,1,back_pain,heart_disease,low,ENT
+P_SIM_20,42.0,female,119.0,73.0,60.0,97.0,92.0,8,abdominal_pain,asthma,low,General Medicine
+P_SIM_21,61.0,male,107.0,66.0,100.0,99.0,90.0,3,cough,asthma,medium,Dermatology
+P_SIM_22,35.0,male,122.0,87.0,117.0,99.0,98.0,8,cough,hypertension,low,General Surgery
+P_SIM_23,66.0,male,135.0,84.0,89.0,100.0,97.0,5,headache,,medium,Pulmonology
+P_SIM_24,58.0,male,159.0,60.0,119.0,100.0,92.0,9,chest_pain,asthma,high,Pulmonology
+P_SIM_25,28.0,female,154.0,77.0,102.0,97.0,96.0,7,sore_throat,asthma,high,Orthopedics
+P_SIM_26,57.0,female,154.0,61.0,73.0,99.0,93.0,3,shortness_of_breath,asthma,medium,Neurology
+P_SIM_27,44.0,female,144.0,73.0,96.0,98.0,99.0,10,headache,hypertension,medium,Orthopedics
+P_SIM_28,40.0,female,114.0,81.0,86.0,98.0,93.0,6,fatigue,asthma,low,Vascular Surgery
+P_SIM_29,30.0,female,142.0,62.0,75.0,100.0,93.0,2,headache,asthma,low,Pulmonology
+P_SIM_3,22.0,female,102.0,68.0,82.0,99.0,98.0,4,cough,asthma,low,General Surgery
+P_SIM_30,38.0,female,152.0,68.0,60.0,97.0,92.0,1,sore_throat,,low,General Medicine
+P_SIM_31,20.0,male,153.0,70.0,86.0,98.0,97.0,9,cough,,medium,Orthopedics
+P_SIM_32,56.0,male,102.0,61.0,109.0,100.0,91.0,7,fatigue,asthma,medium,Pulmonology
+P_SIM_33,71.0,female,140.0,63.0,77.0,98.0,98.0,6,shortness_of_breath,diabetes,medium,Emergency
+P_SIM_34,25.0,male,148.0,63.0,92.0,99.0,98.0,1,fatigue,hypertension,low,General Surgery
+P_SIM_35,31.0,female,137.0,83.0,79.0,100.0,97.0,3,back_pain,asthma,medium,General Surgery
+P_SIM_36,26.0,male,136.0,73.0,93.0,99.0,98.0,4,back_pain,hypertension,medium,General Surgery
+P_SIM_37,45.0,female,100.0,61.0,62.0,97.0,90.0,7,dizziness,hypertension,low,ENT
+P_SIM_38,61.0,female,138.0,72.0,92.0,99.0,94.0,10,back_pain,hypertension,medium,Emergency
+P_SIM_39,55.0,male,130.0,89.0,89.0,98.0,99.0,6,cough,diabetes,medium,Gastroenterology
+P_SIM_4,71.0,male,122.0,72.0,115.0,98.0,91.0,7,abdominal_pain,diabetes,medium,Orthopedics
+P_SIM_40,61.0,male,129.0,73.0,70.0,97.0,99.0,2,chest_pain,diabetes,low,General Medicine
+P_SIM_41,41.0,male,131.0,73.0,97.0,100.0,91.0,3,back_pain,heart_disease,medium,Neurology
+P_SIM_42,71.0,female,104.0,87.0,70.0,100.0,97.0,9,chest_pain,diabetes,low,Emergency
+P_SIM_43,67.0,male,121.0,77.0,66.0,100.0,92.0,8,dizziness,heart_disease,low,Pulmonology
+P_SIM_44,75.0,female,155.0,74.0,102.0,98.0,91.0,2,sore_throat,heart_disease,high,Infectious Disease
+P_SIM_45,42.0,male,150.0,61.0,71.0,98.0,93.0,3,abdominal_pain,heart_disease,low,General Medicine
+P_SIM_46,64.0,male,118.0,65.0,95.0,99.0,96.0,7,sore_throat,heart_disease,high,Emergency
+P_SIM_47,43.0,female,100.0,64.0,68.0,99.0,96.0,1,abdominal_pain,asthma,low,Dermatology
+P_SIM_48,44.0,female,146.0,69.0,111.0,99.0,90.0,4,fatigue,hypertension,high,Neurology
+P_SIM_49,25.0,female,154.0,82.0,118.0,97.0,95.0,4,abdominal_pain,,high,Cardiology
+P_SIM_5,29.0,male,126.0,70.0,61.0,98.0,92.0,7,fatigue,,low,General Medicine
+P_SIM_50,21.0,female,151.0,73.0,83.0,99.0,99.0,10,sore_throat,hypertension,medium,General Surgery
+P_SIM_6,60.0,female,143.0,75.0,92.0,98.0,94.0,3,abdominal_pain,diabetes,medium,Orthopedics
+P_SIM_7,48.0,male,137.0,69.0,76.0,100.0,90.0,6,back_pain,heart_disease,medium,Pulmonology
+P_SIM_8,71.0,female,108.0,75.0,65.0,98.0,92.0,2,chest_pain,asthma,low,ENT
+P_SIM_9,32.0,male,122.0,83.0,69.0,97.0,97.0,9,headache,asthma,low,General Medicine
+P_1771105331810,63.0,male,155.0,95.0,78.0,98.8,96.0,7,back_pain,hypertension,high,General Medicine
+P_1771106854077,29.0,female,115.0,75.0,68.0,97.8,99.0,1,Minor cuts and bruises from fall,,low,ENT
+P_1771118045750,63.0,male,155.0,95.0,78.0,98.8,96.0,8,back_pain,hypertension,high,General Medicine
+P_1771118065437,40,male,114,87,113,100,99,8,shortness_of_breath,,low,General Surgery
+P_1771118065597,70,female,115,72,84,99,96,1,abdominal_pain,heart_disease,medium,Vascular Surgery
+P_1771118065926,34,female,153,68,97,99,91,2,back_pain,,high,Vascular Surgery
+P_1771118066089,34,female,114,71,100,98,94,4,back_pain,,low,Vascular Surgery
+P_1771118066435,71,male,158,68,70,98,99,1,back_pain,hypertension,low,General Medicine
+P_1771118066589,77,male,129,80,115,97,92,6,cough,diabetes,medium,Orthopedics
+P_1771118066806,38,female,142,73,74,100,95,6,cough,diabetes,low,Neurology
+P_1771118067036,65,female,128,66,113,98,91,3,cough,hypertension,medium,Orthopedics
+P_1771118067174,66,female,151,84,116,99,98,4,headache,hypertension,high,Gastroenterology
+P_1771118067329,60,male,138,62,64,98,97,5,chest_pain,diabetes,medium,General Medicine
+P_1771118067540,62,male,148,65,101,100,97,2,dizziness,heart_disease,high,Pulmonology
+P_1771118067745,37,male,154,87,89,98,94,5,chest_pain,,high,Orthopedics
+P_1771118067881,40,male,106,85,106,98,98,5,fatigue,asthma,low,Vascular Surgery
+P_1771118068071,25,male,101,72,115,99,96,8,shortness_of_breath,hypertension,low,Vascular Surgery
+P_1771118068262,65,male,113,62,84,98,90,1,chest_pain,diabetes,medium,Orthopedics
+P_1771118068773,68,female,155,64,97,98,94,7,fatigue,hypertension,high,Orthopedics
+P_1771118068975,32,female,135,68,103,99,91,2,dizziness,asthma,medium,Cardiology
+P_1771118069197,31,male,137,65,67,98,97,6,sore_throat,hypertension,low,General Medicine
+P_1771118069389,20,male,143,64,106,99,94,10,back_pain,asthma,medium,Emergency
+P_1771118069580,59,male,112,87,60,100,90,10,back_pain,,low,General Medicine
+P_1771118069796,45,male,139,75,84,100,93,9,headache,diabetes,medium,Pulmonology
+P_1771118070003,52,female,124,69,93,100,90,7,chest_pain,diabetes,medium,Pulmonology
+P_1771118070202,40,female,108,70,88,100,91,6,cough,,low,Neurology
+P_1771118070417,36,male,126,75,72,100,99,10,shortness_of_breath,,low,General Surgery
+P_1771118070631,40,male,111,76,106,98,95,1,chest_pain,hypertension,low,ENT
+P_1771118070833,46,male,133,88,84,99,97,1,headache,hypertension,medium,General Surgery
+P_1771118071021,39,male,113,66,94,98,92,9,dizziness,heart_disease,low,Neurology
+P_1771118071150,45,male,130,67,60,98,95,1,dizziness,heart_disease,low,General Medicine
+P_1771118071332,42,male,115,79,86,100,93,3,dizziness,hypertension,low,Pulmonology
+P_1771118071506,61,male,122,81,101,98,92,10,fatigue,,low,Orthopedics
+P_1771118071660,58,female,103,82,60,98,99,9,back_pain,heart_disease,low,ENT
+P_1771118072166,56,female,142,68,75,97,90,8,chest_pain,,medium,Orthopedics
+P_1771118072355,21,male,112,89,95,98,98,6,cough,asthma,low,Dermatology
+P_1771118072570,78,male,107,61,107,97,92,5,dizziness,,low,Orthopedics
+P_1771118072694,67,female,100,69,89,99,90,1,chest_pain,heart_disease,low,Infectious Disease
+P_1771118072870,54,female,148,85,81,98,98,2,chest_pain,asthma,medium,Cardiology
+P_1771118073095,26,male,155,66,86,97,95,5,headache,asthma,medium,Emergency
+P_1771118073291,53,female,141,82,119,99,91,5,fatigue,heart_disease,medium,General Medicine
+P_1771118073520,24,male,116,86,119,100,91,2,headache,,low,Pulmonology
+P_1771118073683,61,male,134,72,64,98,94,3,sore_throat,diabetes,medium,General Medicine
+P_1771118073891,67,female,142,62,81,99,99,5,dizziness,asthma,medium,Neurology
+P_1771118074098,63,female,113,86,69,99,90,7,back_pain,diabetes,low,Emergency
+P_1771118074268,42,female,127,73,94,98,90,2,dizziness,heart_disease,low,Dermatology
+P_1771118074508,49,female,107,76,86,98,92,5,dizziness,hypertension,low,Gastroenterology
+P_1771118074713,44,female,121,74,89,100,99,7,shortness_of_breath,heart_disease,low,General Surgery
+P_1771118074913,29,female,101,77,108,100,90,8,abdominal_pain,heart_disease,low,Pulmonology
+P_1771118075130,20,female,100,81,73,98,91,10,headache,asthma,low,Emergency
+P_1771118075324,24,male,138,63,93,97,95,2,shortness_of_breath,asthma,medium,Infectious Disease
+P_1771118075533,79,male,108,76,70,100,95,9,fatigue,asthma,low,Emergency
+P_1771118075729,42,female,124,74,90,98,94,1,dizziness,diabetes,low,Cardiology
+P_1771118089166,60,male,129,68,115,100,99,8,headache,asthma,medium,Emergency
+P_1771118089738,41,male,155,64,116,97,98,5,chest_pain,asthma,low,Orthopedics
+P_1771118089975,75,female,153,73,74,98,99,4,dizziness,diabetes,low,Orthopedics
+P_1771118090192,39,male,155,88,61,97,98,10,back_pain,asthma,low,General Medicine
+P_1771118090374,71,female,133,81,87,99,99,10,shortness_of_breath,heart_disease,medium,Emergency
+P_1771118090505,53,male,134,80,117,97,98,6,dizziness,hypertension,medium,Orthopedics
+P_1771118090689,26,female,134,68,107,98,99,4,shortness_of_breath,asthma,low,Orthopedics
+P_1771118090886,75,male,134,87,104,100,90,4,sore_throat,asthma,medium,Pulmonology
+P_1771118091107,39,male,128,66,98,99,99,4,shortness_of_breath,heart_disease,medium,General Surgery
+P_1771118091317,78,female,124,61,67,100,95,4,fatigue,,low,Pulmonology
+P_1771118091455,47,male,135,80,97,99,92,4,sore_throat,,medium,Vascular Surgery
+P_1771118091614,25,female,136,89,90,98,92,8,fatigue,diabetes,medium,Orthopedics
+P_1771118091800,40,female,137,81,89,98,91,3,abdominal_pain,hypertension,medium,Orthopedics
+P_1771118091924,21,male,125,88,65,97,93,7,shortness_of_breath,,low,General Medicine
+P_1771118092125,26,female,112,75,64,97,95,10,shortness_of_breath,hypertension,low,General Medicine
+P_1771118092324,21,male,118,82,93,99,94,4,abdominal_pain,heart_disease,low,Vascular Surgery
+P_1771118092523,58,female,110,72,97,99,90,2,chest_pain,,medium,Dermatology
+P_1771118092707,42,male,147,60,86,98,98,6,sore_throat,,medium,Orthopedics
+P_1771118092943,48,female,113,61,62,100,97,1,headache,heart_disease,low,General Surgery
+P_1771118093144,76,female,152,65,60,100,91,4,dizziness,heart_disease,medium,Pulmonology
+P_1771118093268,65,male,101,65,106,99,98,6,back_pain,heart_disease,low,Dermatology
+P_1771118093454,71,male,144,77,99,99,92,9,sore_throat,asthma,high,Emergency
+P_1771118093652,48,male,104,69,119,98,98,10,chest_pain,diabetes,low,Vascular Surgery
+P_1771118093858,61,female,125,83,66,98,92,5,abdominal_pain,diabetes,low,General Medicine
+P_1771118094071,74,female,135,68,64,99,97,4,cough,hypertension,medium,Neurology
+P_1771118094279,75,female,138,72,103,100,98,4,shortness_of_breath,heart_disease,medium,General Medicine
+P_1771118094475,22,male,103,82,92,97,91,6,chest_pain,hypertension,low,Vascular Surgery
+P_1771118094641,68,female,113,66,64,100,90,7,headache,diabetes,low,Pulmonology
+P_1771118094778,34,female,150,60,74,98,98,9,abdominal_pain,diabetes,low,Orthopedics
+P_1771118094985,53,male,109,85,105,97,98,3,fatigue,asthma,low,Vascular Surgery
+P_1771118095194,47,female,108,83,94,99,96,5,cough,heart_disease,low,Cardiology
+P_1771118095405,55,female,157,75,67,99,98,10,cough,hypertension,medium,Emergency
+P_1771118095607,74,male,116,60,88,98,95,9,sore_throat,asthma,low,Emergency
+P_1771118095807,41,male,118,84,108,98,97,8,sore_throat,diabetes,low,ENT
+P_1771118096009,63,male,120,72,62,97,94,9,headache,,low,Emergency
+P_1771118096212,38,male,127,73,60,100,99,7,abdominal_pain,heart_disease,low,General Surgery
+P_1771118096428,45,female,101,70,117,97,92,8,dizziness,heart_disease,low,Gastroenterology
+P_1771118096615,69,male,152,65,105,97,96,9,back_pain,asthma,high,Infectious Disease
+P_1771118096834,59,male,151,74,97,100,90,3,dizziness,heart_disease,high,Pulmonology
+P_1771118097034,69,male,131,81,61,98,99,2,cough,asthma,low,General Medicine
+P_1771118097156,20,female,128,74,66,97,98,4,dizziness,diabetes,low,General Medicine
+P_1771118097344,64,male,115,61,117,98,98,3,cough,heart_disease,low,Cardiology
+P_1771118097547,21,male,111,86,63,99,97,8,sore_throat,diabetes,low,General Surgery
+P_1771118097681,68,female,142,87,116,100,92,9,chest_pain,diabetes,high,Pulmonology
+P_1771118097851,76,female,151,86,115,97,90,7,sore_throat,asthma,high,Neurology
+P_1771118098034,41,male,124,80,62,98,98,3,shortness_of_breath,,low,General Medicine
+P_1771118098271,63,male,112,88,109,97,96,3,shortness_of_breath,hypertension,low,ENT
+P_1771118098468,46,female,140,68,117,97,97,4,chest_pain,asthma,medium,Gastroenterology
+P_1771118098680,77,female,112,62,94,100,92,5,fatigue,diabetes,medium,Pulmonology
+P_1771118098877,25,female,125,67,86,99,90,7,sore_throat,diabetes,low,Emergency
+P_1771118118832,55,male,140,90,88,99,95,4,"fatigue,mild_cough",,medium,Gastroenterology
