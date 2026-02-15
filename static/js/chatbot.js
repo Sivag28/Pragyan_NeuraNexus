@@ -1,5 +1,8 @@
 // ==================== Chatbot Functions ====================
 
+// Backend API URL
+const API_BASE_URL = 'https://pragyan-neuranexus.onrender.com';
+
 // Chatbot state
 let chatbotState = {
     isOpen: false,
@@ -109,7 +112,7 @@ async function sendChatMessage(event) {
 
     try {
         // Send message to backend
-        const response = await fetch('/chatbot/message', {
+        const response = await fetch(`${API_BASE_URL}/chatbot/message`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -233,7 +236,7 @@ async function clearChatbot() {
 
     if (confirmed.isConfirmed) {
         try {
-            const response = await fetch('/chatbot/clear', {
+            const response = await fetch(`${API_BASE_URL}/chatbot/clear`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'

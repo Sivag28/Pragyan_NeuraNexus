@@ -1,6 +1,9 @@
+// Backend API URL
+const API_BASE_URL = 'https://pragyan-neuranexus.onrender.com';
+
 async function fetchDashboardData(params = {}) {
     const qs = new URLSearchParams(params).toString();
-    const url = '/dashboard-data' + (qs ? `?${qs}` : '');
+    const url = `${API_BASE_URL}/dashboard-data` + (qs ? `?${qs}` : '');
     const res = await fetch(url);
     if (!res.ok) throw new Error('Failed to load dashboard data: ' + (await res.text()));
     return res.json();
