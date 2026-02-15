@@ -4,7 +4,7 @@
  */
 
 // Backend API URL
-const API_BASE_URL = 'https://pragyan-neuranexus.onrender.com';
+
 
 // Global chart instances
 let riskChart = null;
@@ -28,7 +28,7 @@ const COLORS = {
 // Fetch dashboard data
 async function fetchDashboardData(params = {}) {
     const qs = new URLSearchParams(params).toString();
-    const url = `${API_BASE_URL}/dashboard-data` + (qs ? `?${qs}` : '');
+    const url = `/dashboard-data` + (qs ? `?${qs}` : '');
     const res = await fetch(url);
     if (!res.ok) throw new Error('Failed to load dashboard data: ' + (await res.text()));
     return res.json();
@@ -36,7 +36,7 @@ async function fetchDashboardData(params = {}) {
 
 // Update department capacity
 async function updateDepartmentCapacity(department, capacity) {
-    const res = await fetch(`${API_BASE_URL}/update-department-capacity`, {
+    const res = await fetch(`/update-department-capacity`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ department, capacity })
@@ -50,7 +50,7 @@ async function updateDepartmentCapacity(department, capacity) {
 
 // Get department capacity
 async function getDepartmentCapacity() {
-    const res = await fetch(`${API_BASE_URL}/get-department-capacity`);
+    const res = await fetch(`/get-department-capacity`);
     const data = await res.json();
     if (!data.success) {
         throw new Error(data.error || 'Failed to get capacity');

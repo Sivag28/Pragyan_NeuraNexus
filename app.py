@@ -2081,7 +2081,7 @@ def resource_utilization():
 
 @app.route('/dashboard')
 def dashboard():
-    """Render the visual dashboard"""
+    """Render the dashboard page"""
     return render_template('dashboard.html')
 
 
